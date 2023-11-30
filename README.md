@@ -1,4 +1,4 @@
-# **Image similarity: 图像相似度比较类功能**
+# **Image similarity: 基于图像相似度的功能**
 1、computerFeatureToHash.py：
 Use clip-vit-huge-14 to obtain the image feature value, calculate the hash of the feature value, and return the hash value
 
