@@ -1,0 +1,15 @@
+1. 基于文档的问答参考：https://github.com/chatchat-space/Langchain-Chatchat
+2. 对文本进行训练参考：https://github.com/hiyouga/LLaMA-Factory
+3. 基座模型参考：
+https://github.com/baichuan-inc/Baichuan2
+https://huggingface.co/Qwen/Qwen-14B-Chat
+https://huggingface.co/Qwen/Qwen-7B-Chat
+https://huggingface.co/mistralai/Mistral-7B-v0.1
+上述基座模型推荐Qwen14B
+4. 服务器8*A800，
+5. 目录地址 bigData/
+文本训练脚本目录：bigData/pycharm/LLaMA-Efficient-Tuning-main/
+文档问答目录：bigData/code/Langchain-Chatchat-master/
+文本训练保存lora目录：bigData/trainedModel/
+文本训练模型合并目录：bigData/exportModel/
+训练后模型评估目录：bigData/predict/
