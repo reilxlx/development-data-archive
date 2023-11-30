@@ -24,7 +24,7 @@ https://huggingface.co/mistralai/Mistral-7B-v0.1<br>
 比如有场景需要搜索两类不同的数据，可分开搜索，也可合并搜索。上游下数需要搜索的数据，每日定时解压建立索引，存入本地。接收请求检索相似度topK的信息返回
 
 # **Speech Recognition：语音识别**
-1、runWhisper_pipeline.py
-2、runWhisper_faster_whisper.py：
-使用transformers或者faster_whisper库方式本地运行whisper模型或faster whisper模型。效果不错，可简单替代生产环境语音识别功能
+1、runWhisper_pipeline.py<br>
+2、runWhisper_faster_whisper.py：<br>
+使用transformers或者faster_whisper库方式本地运行whisper模型或faster whisper模型。效果不错，可简单替代生产环境语音识别功能<br>
 3、可配合https://github.com/yeyupiaoling/Whisper-Finetune 微调whisper模型。数据准备代码参考prepareVoice.py
