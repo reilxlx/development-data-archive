@@ -3,10 +3,10 @@ Image similarity: 图像相似度比较类功能
 Use clip-vit-huge-14 to obtain the image feature value, calculate the hash of the feature value, and return the hash value
 
 2、faissImagesFeaturesLab.py：
-# A demo based on faiss, implementing the following three functions
-# 1. Build a database
-# 2. Store feature values for all images in the specified folder in the database
-# 3. Search for feature values in the specified database name
+A demo based on faiss, implementing the following three functions
+1. Build a database
+2. Store feature values for all images in the specified folder in the database
+3. Search for feature values in the specified database name
 
 
 Model training：大模型训练经验
