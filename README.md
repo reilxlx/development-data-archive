@@ -31,4 +31,4 @@ https://huggingface.co/mistralai/Mistral-7B-v0.1<br>
 
 # **Delete Twitters：删除推特**
 1、deleteTwitters.py<br>
-使用pyautogui库，按照给定按钮的图标模拟点击逐个删除推特。由于省略号...个人推特主页有多个，使用代码时候需要方法UI。
+使用pyautogui库，按照给定按钮的图标模拟点击逐个删除推特。由于省略号...个人推特主页有多个，使用代码时候需要缩放UI。
