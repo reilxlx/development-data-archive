@@ -28,3 +28,7 @@ https://huggingface.co/mistralai/Mistral-7B-v0.1<br>
 2、runWhisper_faster_whisper.py：<br>
 使用transformers或者faster_whisper库方式本地运行whisper模型或faster whisper模型。效果不错，可简单替代生产环境语音识别功能<br>
 3、可配合https://github.com/yeyupiaoling/Whisper-Finetune 微调whisper模型。数据准备代码参考prepareVoice.py
+
+# **Delete Twitters：删除推特**
+1、deleteTwitters.py<br>
+使用pyautogui库，按照给定按钮的图标模拟点击逐个删除推特。由于省略号...个人推特主页有多个，使用代码时候需要方法UI。
