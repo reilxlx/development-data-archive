@@ -45,7 +45,10 @@ Model training based on single-machine multi-card, code tested on A800 cluster<b
 3、Val.py<br>
 Test results of the Lora model trained on the test dataset<br>
 
-The above codes have both Lora and full versions. The full version means that all parameters of the visual and text modules are included in fine-tuning. In this experiment, the test results show that training only the visual_model under the Lora method yields the best effect.<br>
+The above codes have both Lora and full versions. The full version means that all parameters of the visual and text modules are included in fine-tuning. 
+
+In this experiment, the test results show that training only the visual_model under the Lora method yields the best effect.<br>
+![TestResults](https://github.com/reilxlx/development-data-archive/blob/main/CLIP/Data/CLIPTestData.jpg)
 
 Related Sources：<br>
 https://github.com/awilliamson10/clipora<br>
