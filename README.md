@@ -53,3 +53,17 @@ In this experiment, the test results show that training only the visual_model un
 Related Sources：<br>
 https://github.com/awilliamson10/clipora<br>
 https://github.com/ptmorris03/CLIP-for-Mushrooms<br>
+
+# **Text to Image: Generating Images from Text**
+1. Labeling and Cropping Images:</br>
+When training with LoRA for specific individuals, the higher the original image resolution, the better. It is recommended to use more than 50 images; currently, 100 images in the training set yield better results than 20. For image labeling, use cybertronfurnace, developed by Bilibili UP 朱尼酱. It includes features like face cropping enhancement, image labeling, tag adjustment, and training. However, for better face cropping results, consider using MTCNN.</br>
+
+2. Training LoRA Model Based on Basic SD Model:</br>
+For training, use scripts from https://github.com/Akegarasu/lora-scripts. Copy the base model to the sd-models folder. By default, after selecting an image folder, it will move the image text to a subfolder. You need to manually adjust the subfolder's numbers, representing the training rounds for each image.</br>
+
+3. Using the Model:</br>
+Utilize the stable-diffusion-webui tool, specifically the tet2img function, for image output. Copy the base model to the models\Stable-diffusion folder and the LoRA model to the models\Lora folder. Launch the script using webui.bat. After multiple tests, it's noted that setting the LoRA model's weight in the 0.6 range yields good results. If the weight is greater or equal to 1, overfitting with irregular patterns in the output is more likely. However, adding the LoRA model generally results in clearer images compared to without it. This issue is under ongoing analysis and experimentation. Note: When using a proxy, add the following line in the webui.bat script: set COMMANDLINE_ARGS=--no-gradio-queue. Refer to: https://github.com/AUTOMATIC1111/stable-diffusion-webui.</br>
+
+4. For an alternative tool, consider using Comflowy. Learn more about it and how to use it from the following links:</br>
+https://www.comflowy.com/zh-CN</br>
+https://github.com/6174/comflowy</br>
