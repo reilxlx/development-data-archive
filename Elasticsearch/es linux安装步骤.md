@@ -142,12 +142,104 @@ elasticsearch.hosts: ["http://localhost:9200"]
 nohup bin/kibana > /dev/null 2>&1 &
 ``````
 
+# 11 获取所有索引的列表
+获取所有索引的列表
+使用_cat/indices API来获取所有索引的列表。这是一个简洁版的命令，返回较易读的格式：
+``````bash
+GET /_cat/indices?v
+``````
+这个命令会返回所有的索引及其基本信息，比如索引名称、健康状态、文档数量等。参数 v 是用来使输出结果更为可读。
+获取索引的详细设置
+要获取每个索引的详细设置，你可以使用 _settings 和 _mappings API来获得配置和映射信息。
+获取所有索引的配置设置：
+``````bash
+GET /_all/_settings
+``````
+这个命令会返回所有索引的设置信息，包括分片数量、副本数、索引创建时间等。
+获取所有索引的映射信息：
+``````bash
+GET /_all/_mapping
+``````
+这个命令会给你所有索引的字段和类型信息，也就是Elasticsearch里的映射信息。
+
+# 12 elasticsearch-analysis-ik 与 analysis-pinyin 的区别
+elasticsearch-analysis-ik：这是一个Elasticsearch的IK Analysis插件，它集成了Lucene的IK分析器，支持自定义词典。该插件主要用于支持中文分词。 </br>
+analysis-pinyin：这是一个用于Elasticsearch的拼音分析插件，它用于中文字符与拼音之间的转换，并集成NLP工具。</br>
+
+两者的区别：</br>
+用途和功能：elasticsearch-analysis-ik 插件专注于提供中文分词功能，它允许进行细粒度的中文文本分析。而 analysis-pinyin 插件提供中文文本到拼音的转换，通常用于实现中文文本的拼音搜索。
+底层技术/集成：elasticsearch-analysis-ik 插件集成了Lucene的IK分析器，这是一种用于中文语言处理的分词技术。analysis-pinyin 插件则可能集成了其他的NLP工具用于实现拼音转换的功能。</br>
+
+两者的联系：</br>
+中文处理：两个插件都是针对中文文本处理的场景设计的，一个提供分词服务，一个提供拼音转换。
+Elasticsearch插件：他们都是Elasticsearch的插件，可以被用于在Elasticsearch中进行中文相关的文本分析。
+搜索优化：这两个插件可被用于优化中文的搜索体验。例如，IK分析器能够提高中文全文搜索的准确性，而拼音插件能够让用户通过输入拼音来搜索中文内容。</br>
+
+结论：</br>
+这两个插件在提供中文搜索和分析能力上是互补的。elasticsearch-analysis-ik 主要负责有效地分词，以提供精确的中文搜索；analysis-pinyin 则允许用户通过拼音来搜索中文字符，这在用户输入法受限或搜索习惯上有拼音输入时非常实用。在实际的应用中，结合使用这两个插件，将极大地提升中文搜索的用户体验。
 
 
-https://blog.csdn.net/zx_1305769448/article/details/129427815
+# 13 多节点安装ES服务，以三个节点为例
+## 下载Elasticsearch tar.gz安装包
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.x.x-linux-x86_64.tar.gz
 
-https://blog.csdn.net/m0_50287279/article/details/131819482
+## 解压安装包
+tar -zxvf elasticsearch-7.x.x-linux-x86_64.tar.gz
 
-https://blog.csdn.net/u010080562/article/details/123843540
+## 进入Elasticsearch目录
+cd elasticsearch-7.x.x/
 
-https://blog.csdn.net/m0_67403272/article/details/126660382
+## 配置Elasticsearch集群
+每个节点的Elasticsearch配置文件默认位于解压目录下的config/elasticsearch.yml。您需要根据每个节点的角色和网络设置编辑这个文件。</br>
+
+Node 1配置
+``````bash
+cluster.name: my-cluster
+node.name: node-1
+network.host: 10.1.0.1
+http.port: 9200
+discovery.seed_hosts: ["10.1.0.1", "10.1.0.2", "10.1.0.3"]
+cluster.initial_master_nodes: ["node-1", "node-2", "node-3"]
+``````
+Node 2配置
+``````bash
+cluster.name: my-cluster
+node.name: node-2
+network.host: 10.1.0.2
+http.port: 9200
+discovery.seed_hosts: ["10.1.0.1", "10.1.0.2", "10.1.0.3"]
+cluster.initial_master_nodes: ["node-1", "node-2", "node-3"]
+``````
+Node 3配置
+``````bash
+cluster.name: my-cluster
+node.name: node-3
+network.host: 10.1.0.3
+http.port: 9200
+discovery.seed_hosts: ["10.1.0.1", "10.1.0.2", "10.1.0.3"]
+cluster.initial_master_nodes: ["node-1", "node-2", "node-3"]
+``````
+保存并关闭elasticsearch.yml。
+
+## 启动Elasticsearch集群
+在每个节点，通过以下命令启动Elasticsearch:
+``````bash
+./bin/elasticsearch -d
+或
+nohup ./bin/elasticsearch > start.log 2>&1 &
+``````
+
+## 验证集群状态
+``````bash
+curl -X GET "10.1.0.1:9200/_cluster/health?pretty"
+``````
+这个命令应该会返回集群的健康状态信息，其中会显示集群的状态是green、yellow还是red，以及集群的节点信息。
+
+
+
+
+安装步骤参考链接</br>
+https://blog.csdn.net/zx_1305769448/article/details/129427815</br>
+https://blog.csdn.net/m0_50287279/article/details/131819482</br>
+https://blog.csdn.net/u010080562/article/details/123843540</br>
+https://blog.csdn.net/m0_67403272/article/details/126660382</br>
