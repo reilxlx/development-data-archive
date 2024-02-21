@@ -1,0 +1,4 @@
+es:
+  address: http://ip:9200
+  insuraceIndex: insurance_1
+  jijinlicaiIndex: jijinlicai_1
