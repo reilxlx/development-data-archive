@@ -67,3 +67,7 @@ Utilize the stable-diffusion-webui tool, specifically the tet2img function, for 
 4. For an alternative tool, consider using Comflowy. Learn more about it and how to use it from the following links:</br>
 https://www.comflowy.com/zh-CN</br>
 https://github.com/6174/comflowy</br>
+
+# Python or Anaconda迁移方案
+方案目标：测试环境的GPU服务器开通了一些外网访问策略，可以访问pip源及一些大模型下载网站。使用conda环境开发部署测试，但是生产环境无外网访问条件。设想可以将测试服务器的环境移植到生产服务器中，实现功能的平移。</br>
+Project Goal: The GPU servers within the testing infrastructure have been configured with selective internet access strategies, allowing connectivity to pip repositories and various large-scale model download portals. Development, deployment, and testing processes are conducted utilizing the conda ecosystem. However, the production environment operates without internet connectivity. The proposal aims to transplant the environment from the test servers to the production servers to seamlessly transition functionalities.
