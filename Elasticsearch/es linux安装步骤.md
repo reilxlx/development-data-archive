@@ -82,12 +82,19 @@ cluster.initial_master_node: ["es-node0"]
 # 05 elasticsearch.yml配置说明
 ![aaa](./yml.JPG)
 
-# 06 修改es内存参数
-在elasticsearch根目录下的config文件夹中的jvm.options文件，修改两个参数，修改之后重启即可。
-最大内存
--Xms4g
-最小内存
--Xmx4g
+# 06 设置 JVM 堆内存大小
+编辑 Elasticsearch 的配置文件 jvm.options，该文件位于 Elasticsearch 的 config 目录中
+`````bash
+-Xms30g
+-Xmx30g
+`````
+Elasticsearch （但不超过32GB），则需要将这两个值设置为30g，这里稍微小于32GB留出一些系统和其他进程所需的内存空间。
+
+重启 Elasticsearch 服务后，你可以用以下命令确认堆内存大小的更改：
+`````bash
+curl -X GET "localhost:9200/_nodes/stats/jvm?pretty"
+`````
+查找返回的 JSON 数据中的 heap_used_in_bytes 和 heap_max_in_bytes 字段，确保设置的堆大小正确。
 
 # 07 启停脚本
 ``` bash
@@ -137,6 +144,14 @@ server.port: 5601
 server.host: "0.0.0.0"
 elasticsearch.hosts: ["http://localhost:9200"]
 ``````
+
+若在多节点es服务中配置kibana
+````bash
+server.port: 5601
+server.host: "192.168.1.1" # Kibana所在服务器的IP
+elasticsearch.hosts: ["http://192.168.1.1:9200", "http://192.168.1.2:9200", "http://192.168.1.3:9200"]
+````
+
 启动服务
 ``````bash
 nohup bin/kibana > /dev/null 2>&1 &
@@ -235,6 +250,31 @@ curl -X GET "10.1.0.1:9200/_cluster/health?pretty"
 ``````
 这个命令应该会返回集群的健康状态信息，其中会显示集群的状态是green、yellow还是red，以及集群的节点信息。
 
+
+## nginx作为es请求的负载均衡
+Nginx 默认使用轮询（round-robin）策略进行负载均衡。你可以通过简单的配置更改来实现不同的负载均衡策略，例如最少连接（least_conn）或基于 IP 的哈希分配（ip_hash）等。
+````nginx
+http {
+    upstream elasticsearch_cluster {
+        least_conn;
+        server 192.168.1.1:9200; # 替换为你的 Elasticsearch 第一个节点的 IP 和 端口
+        server 192.168.1.2:9200; # 第二个节点
+        server 192.168.1.3:9200; # 第三个节点
+        # ... 继续添加其他节点
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://elasticsearch_cluster; # 代理到 upstream 定义的 Elasticsearch 集群
+            proxy_http_version 1.1;
+            proxy_set_header Connection "Keep-Alive";
+            proxy_set_header Proxy-Connection "Keep-Alive";
+        }
+    }
+}
+````
 
 
 
