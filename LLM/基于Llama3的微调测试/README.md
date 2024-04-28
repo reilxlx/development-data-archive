@@ -7,15 +7,12 @@
 - https://huggingface.co/datasets/hiyouga/DPO-En-Zh-20k
 - https://huggingface.co/datasets/LooksJuicy/ruozhiba
 
-### 训练工具
-https://github.com/hiyouga/LLaMA-Factory
-
 ### 测评方式：
-使用opencompass(https://github.com/open-compass/OpenCompass/), 测试工具基于CEval和MMLU对微调之后的模型和原始模型进行测试。</br>
+使用opencompass(https://github.com/open-compass/OpenCompass/)测试工具基于CEval和MMLU对微调之后的模型和原始模型进行测试。</br>
 测试模型分别为：
 - Llama-3-8B
 - Llama-3-8B-Instruct
-- LLama3-Instruct-sft-ruozhiba，使用ruozhiba数据对Llama-3-8B-Instruct使用sft方式lora微调
+- LLama3-Instruct-sft-ruozhiba,使用ruozhiba数据对Llama-3-8B-Instruct使用sft方式lora微调
 - LLama3-Instruct-orpo-full-hiyouga，使用DPO-En-Zh-20k数据对Llama-3-8B-Instruct使用orpo方式进行全量full调整
 - LLama3-Instruct-orpo-lora-hiyouga，使用DPO-En-Zh-20k数据对Llama-3-8B-Instruct使用orpo方式进行lora方式微调
 
@@ -29,4 +26,5 @@ https://github.com/hiyouga/LLaMA-Factory
 | LLama3-Instruct          | 50.55 | 67.15|
 | LLama3-Instruct-sft-ruozhiba-3epoch | 50.87 | 67.51|
 | LLama3-Instruct-orpo-full-hiyouga-2epoch | 47.52 | 62.71 |
+| LLama3-Instruct-orpo-full-hiyouga-3epoch | 49.59 | 63.34 |
 | LLama3-Instruct-orpo-lora-hiyouga-3epoch | 50.67 | 67.27|
