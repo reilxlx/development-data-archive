@@ -7,6 +7,9 @@
 - https://huggingface.co/datasets/hiyouga/DPO-En-Zh-20k
 - https://huggingface.co/datasets/LooksJuicy/ruozhiba
 
+### 训练工具
+https://github.com/hiyouga/LLaMA-Factory
+
 ### 测评方式：
 使用opencompass(https://github.com/open-compass/OpenCompass/ )， 测试工具基于CEval和MMLU对微调之后的模型和原始模型进行测试。</br>
 测试模型分别为：
