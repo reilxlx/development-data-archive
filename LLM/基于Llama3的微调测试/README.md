@@ -8,7 +8,7 @@
 - https://huggingface.co/datasets/LooksJuicy/ruozhiba
 
 ### 测评方式：
-使用opencompass(https://github.com/open-compass/OpenCompass/)测试工具基于CEval和MMLU对微调之后的模型和原始模型进行测试。</br>
+使用opencompass(https://github.com/open-compass/OpenCompass/)，测试工具基于CEval和MMLU对微调之后的模型和原始模型进行测试。</br>
 测试模型分别为：
 - Llama-3-8B
 - Llama-3-8B-Instruct
