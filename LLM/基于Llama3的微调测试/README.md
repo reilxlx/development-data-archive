@@ -28,7 +28,8 @@ https://github.com/hiyouga/LLaMA-Factory
 | LLama3                   | 49.91 | 66.62|
 | LLama3-Instruct          | 50.55 | 67.15|
 | LLama3-Instruct-sft-ruozhiba-3epoch | 50.87 | 67.51|
+| LLama3-Instruct-sft-ruozhiba-10epoch | 49.29 | 67.21|
 | LLama3-Instruct-orpo-full-hiyouga-2epoch | 47.52 | 62.71 |
 | LLama3-Instruct-orpo-full-hiyouga-3epoch | 49.59 | 63.34 |
 | LLama3-Instruct-orpo-lora-hiyouga-3epoch | 50.67 | 67.27|
-| LLama3-Instruct-orpo-lora-hiyouga-10epoch | 49.29 | 67.21|
+
