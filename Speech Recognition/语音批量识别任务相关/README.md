@@ -13,7 +13,7 @@ done
 ```
 
 ### whisper识别注意点
-可以设置识别语言为中文，在音频中声音较轻无法识别的情况下，提交中文识别成功率。
+可以设置识别语言为中文，在音频中声音较轻无法识别的情况下，提高中文识别成功率。
 ```python
 result = pipe(file_path, generate_kwargs={"language": "chinese"})
 ```
