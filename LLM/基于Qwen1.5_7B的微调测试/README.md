@@ -1,6 +1,6 @@
 ### 数据集
 使用以下8个数据集</br>
-![image/png](https://cdn-uploads.huggingface.co/production/uploads/636f54b95d2050767e4a6317/maYhXsWKddThOBRvU5HtZ.png)</br>
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/636f54b95d2050767e4a6317/OkuVQ1lWXRAKyel2Ef0Fz.png)</br>
 对Qwen1.5-7B-Chat进行微调并测试，结果显示，使用三个数据集微调后的模型在CEVAL和MMLU的评分上均有所提升，而且这个模型的表现优于使用八个数据集微调后的模型。
 
 ### 基础模型：
