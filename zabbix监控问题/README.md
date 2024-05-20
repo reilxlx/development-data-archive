@@ -2,7 +2,7 @@
 系统团队使用zabbix监控服务器，发现虚机服务器超一年未重启，修改zabbix监控的数据，返回合理的数值使得zabbix监控时认为服务器的uptime为合理值。
 
 ### 解决方案
-测试了几种方式
+几种方式
 1. 修改 uptime 文件
 ```bash
 echo "0.00 0.00" > /tmp/uptime_fake
@@ -33,8 +33,6 @@ LD_PRELOAD=/path/to/libfakeuptime.so zabbix_agentd -c zabbix_agentd.conf
 方案1和方案2测试后无效，方案3可行。
 
 ### 代码
-根据您的新要求，我们需要修改`sysinfo`函数的行为来满足以下条件：
-
 1. **读取`time.txt`文件**：这个文件包含一个整数`upday`，表示自定义的天数。
 2. **比较系统的`uptime`天数和`upday`**：
    - 如果系统的`uptime`天数大于`upday`，则从`uptime`中减去`upday * 24 * 60 * 60`秒（将天数转换为秒）。
@@ -82,11 +80,8 @@ int sysinfo(struct sysinfo *info) {
 ```
 
 ### 代码解释
-
 1. **动态链接**：使用`dlsym(RTLD_NEXT, "sysinfo")`获取原始的`sysinfo`函数，这样可以在调用`original_sysinfo(info)`后获取系统的真实`uptime`。
-
 2. **读取`time.txt`**：使用`fopen`和`fscanf`读取`time.txt`中的`upday`。如果文件打不开或读取失败，函数将返回原始的`uptime`。
-
 3. **计算天数**：将`uptime`（秒）除以`86400`（一天的秒数）得到天数。
 
 4. **调整`uptime`**：
