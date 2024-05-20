@@ -92,16 +92,13 @@ def process_file(input_file, output_dir, file_format='json', batch_size=16):
                 for item in items:
                     f.write(json.dumps(item, ensure_ascii=False) + '\n')
 
-# 主函数
 def main():
     input_dir = '/root/techTest/llama3/data/'
     output_dir = '/root/techTest/llama3/datacleaned/'
-    batch_size = 64  # 设置适当的批量大小
+    batch_size = 64
     
-    # 创建输出目录
     os.makedirs(output_dir, exist_ok=True)
     
-    # 处理输入目录中的所有JSON和JSONL文件
     for file_name in os.listdir(input_dir):
         input_file = os.path.join(input_dir, file_name)
         if os.path.isfile(input_file):
