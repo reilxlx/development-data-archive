@@ -5,14 +5,14 @@ from transformers import AutoTokenizer, AutoModel, AutoModelForCausalLM
 from transformers.generation.utils import GenerationConfig
 from tqdm import tqdm
 
-checkpoint = "/root/bigData/models/baichuan2-13B-chat"
+checkpoint = "/root/models/baichuan2-13B-chat"
 cache_dir = '/root/models/.cache'
 tokenizer_1 = AutoTokenizer.from_pretrained(checkpoint, trust_remote_code=True, cache_dir=cache_dir)
 model_1 = AutoModelForCausalLM.from_pretrained(checkpoint, device_map="sequential", torch_dtype=torch.bfloat16, trust_remote_code=True).eval()
 model_1.generation_config = GenerationConfig.from_pretrained(checkpoint, trust_remote_code=True)
 
 
-model_id = '/home/bigData/models/Qwen-14B-Chat'
+model_id = '/home/models/Qwen-14B-Chat'
 tokenizer_2 = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
 model_2 = AutoModelForCausalLM.from_pretrained(model_id, device_map="sequential", trust_remote_code=True, torch_dtype=torch.bfloat16).eval()
 model_2.generation_config = GenerationConfig.from_pretrained(model_id, trust_remote_code=True)
