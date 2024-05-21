@@ -1,4 +1,4 @@
-### SplitDataToDifLanguages.py
+### SplitDataByLangIdToDifLanguagesTqdm.py SplitDataBypaplucaxlmToDifLanguages.py
 在微调LLM模型的过程中，优化数据集至关重要。在特定应用场景中，我们可能需要进行以下调整：</br>
 1. 调整llama3模型以更好地适配中文指令，从而显著减少其输出中的英文内容和表情符号的频率。
 2. 考虑到Hugging Face中部分微调数据集包含多个语言版本，比如中文、英文、日语、韩文和阿拉伯语等，在特定情况下，选择单一语言进行微调可能更有助于提升任务性能。
