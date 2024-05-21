@@ -37,7 +37,17 @@ SentenceSimilarityZh.py</br>
 
 - The input is the original json or jsonl files, and the output is the corpus that has been cleaned.
 - Use embedding models to assess the similarity between the corpus and specified paragraphs, increasing the likelihood of matching by designating multiple paragraphs.
+</br>
 
+SplitDataByLangIdToDifLanguagesTqdm.py</br>
+- 对SplitDataToDifLanguages.py进行了优化。在语种识别模型中我们使用了langid库，而SplitDataToDifLanguages.py则采用了paplucaxlm-roberta-base-language-detection模型进行数据分割。
+- 我们引入了tqdm模块以展示处理进度，使进度可视化。
+- 由于paplucaxlm-roberta-base-language-detection模型是基于预训练的，并且仅支持20种语言，因此在那些未经训练的语言上效果可能不尽如人意。模型的详细信息可以在以下链接中找到：https://huggingface.co/papluca/xlm-roberta-base-language-detection。
+</br>
 
+- The `SplitDataToDifLanguages.py` has been optimized. In the language identification model, we use the `langid` library, while `SplitDataToDifLanguages.py` utilizes the `paplucaxlm-roberta-base-language-detection` model for data segmentation.
+- The `tqdm` module has been introduced for displaying the progress of conversion, making the progress visualization.
+- Given that the `paplucaxlm-roberta-base-language-detection` model is based on pre-training and only supports 20 languages, its performance may not be satisfactory on languages that have not been trained. For more information about the model, you can visit the link: https://huggingface.co/papluca/xlm-roberta-base-language-detection.
+</br>
 
 
