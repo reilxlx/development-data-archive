@@ -50,4 +50,8 @@ SplitDataByLangIdToDifLanguagesTqdm.py</br>
 - Given that the `paplucaxlm-roberta-base-language-detection` model is based on pre-training and only supports 20 languages, its performance may not be satisfactory on languages that have not been trained. For more information about the model, you can visit the link: https://huggingface.co/papluca/xlm-roberta-base-language-detection.
 </br>
 
+SplitAndSimilarityBatchByDataset.py</br>
+- 文本相似度维度进行批量处理
+</br>
 
+- Bulk processing by text similarity dimension, serial processing for language detection
