@@ -57,7 +57,7 @@ SplitAndSimilarityBatchByDataset.py</br>
 - Bulk processing by text similarity dimension, serial processing for language detection
 
 ### 代码执行速度
-该代码SplitDataByLangIdToDifLanguagesTqdm.py在</br>
+1. 该代码SplitDataByLangIdToDifLanguagesTqdm.py在</br>
 测试机器：A800 * 1 上的执行速度</br>
 测试数据集在huggingface都可下载
 
@@ -87,7 +87,7 @@ tigerbot-zhihu-zh-10k.jsonl: 100%|██████████| 10240/10240 [0
 
 
 
-SplitAndSimilarityBatchByDataset.py在
+2. SplitAndSimilarityBatchByDataset.py在
 测试机器T4 * 1 上的执行速度， 批量大小为64</br>
 测试数据集在huggingface都可下载
 - silk-road/alpaca-data-gpt4-chinese
