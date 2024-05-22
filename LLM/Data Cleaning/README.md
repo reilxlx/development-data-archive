@@ -55,3 +55,53 @@ SplitAndSimilarityBatchByDataset.py</br>
 </br>
 
 - Bulk processing by text similarity dimension, serial processing for language detection
+
+### 代码执行速度
+该代码SplitDataByLangIdToDifLanguagesTqdm.py在</br>
+测试机器：A800 * 1 上的执行速度</br>
+测试数据集在huggingface都可下载
+
+- silk-road/alpaca-data-gpt4-chinese
+- lyuricky/alpaca_data_zh_51k
+- llm-wizard/alpaca-gpt4-data-zh
+- LooksJuicy/ruozhiba
+- Sao10K/Claude-3-Opus-Instruct-5K
+- TigerResearch/sft_zh
+
+Alpaca_data_gpt4_zhsilk_road.jsonl: 100%|██████████| 52049/52049 [14:53<00:00, 58.25it/s]</br>
+alpaca_data_zh_51k.json: 100%|██████████| 51461/51461 [12:40<00:00, 67.66it/s]</br>
+alpaca_gpt4_data_zh.json: 100%|██████████| 48818/48818 [12:22<00:00, 65.76it/s]</br>
+ruozhiba_qa.json: 100%|██████████| 1496/1496 [00:22<00:00, 65.94it/s]</br>
+Claude3-Opus-Multi-Instruct-5K-merged.json: 100%|██████████| 4217/4217 [01:30<00:00, 46.76it/s]</br>
+
+tigerbot-alpaca-zh-0.5m.jsonl: 100%|██████████| 500000/500000 [2:06:51<00:00, 65.69it/s]</br>
+tigerbot-book-qa-1k.jsonl: 100%|██████████| 866/866 [00:13<00:00, 65.91it/s]</br>
+tigerbot-hc3-zh-12k.jsonl: 100%|██████████| 12807/12807 [03:26<00:00, 62.07it/s]</br>
+tigerbot-riddle-qa-1k.jsonl: 100%|██████████| 1000/1000 [00:14<00:00, 67.20it/s]</br>
+tigerbot-superclue-c3-zh-5k.jsonl: 100%|██████████| 4792/4792 [01:18<00:00, 60.84it/s]</br>
+tigerbot-wiki-qa-zh-1k.jsonl: 100%|██████████| 1000/1000 [00:14<00:00, 67.06it/s]</br>
+tigerbot-zhihu-zh-10k.jsonl: 100%|██████████| 10240/10240 [02:56<00:00, 58.03it/s]</br>
+
+单A800，12个文件355.3Mb共处理时间: 100%|██████████| 12/12 [2:57:11<00:00, 885.92s/it]
+大约一个A800*8集群，一天可处理22GB。
+
+
+
+SplitAndSimilarityBatchByDataset.py在
+测试机器T4 * 1 上的执行速度， 批量大小为64</br>
+测试数据集在huggingface都可下载
+- silk-road/alpaca-data-gpt4-chinese
+- LooksJuicy/ruozhiba
+- TigerResearch/sft_zh
+
+Alpaca_data_gpt4_zhsilk_road.jsonl: 100%|██████████| 814/814 [28:33<00:00,  2.11s/it]
+ruozhiba_qa.json: 100%|██████████| 24/24 [00:17<00:00,  1.35it/s]
+tigerbot-alpaca-zh-0.5m.jsonl: 100%|██████████| 7813/7813 [2:13:35<00:00,  1.03s/it]
+tigerbot-book-qa-1k.jsonl: 100%|██████████| 14/14 [00:05<00:00,  2.55it/s]
+tigerbot-hc3-zh-12k.jsonl: 100%|██████████| 201/201 [05:07<00:00,  1.53s/it]
+tigerbot-riddle-qa-1k.jsonl: 100%|██████████| 16/16 [00:03<00:00,  4.12it/s]
+tigerbot-superclue-c3-zh-5k.jsonl: 100%|██████████| 75/75 [02:28<00:00,  1.98s/it]
+tigerbot-wiki-qa-zh-1k.jsonl: 100%|██████████| 16/16 [00:07<00:00,  2.01it/s]
+
+单个T4，8个文件289.6Mb共处理时间: 100%|██████████| 9/9 [2:56:01<00:00, 1173.49s/it]
+一张T4，一天可处理2.26GB。
