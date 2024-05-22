@@ -94,14 +94,14 @@ tigerbot-zhihu-zh-10k.jsonl: 100%|██████████| 10240/10240 [0
 - LooksJuicy/ruozhiba
 - TigerResearch/sft_zh
 
-Alpaca_data_gpt4_zhsilk_road.jsonl: 100%|██████████| 814/814 [28:33<00:00,  2.11s/it]
-ruozhiba_qa.json: 100%|██████████| 24/24 [00:17<00:00,  1.35it/s]
-tigerbot-alpaca-zh-0.5m.jsonl: 100%|██████████| 7813/7813 [2:13:35<00:00,  1.03s/it]
-tigerbot-book-qa-1k.jsonl: 100%|██████████| 14/14 [00:05<00:00,  2.55it/s]
-tigerbot-hc3-zh-12k.jsonl: 100%|██████████| 201/201 [05:07<00:00,  1.53s/it]
-tigerbot-riddle-qa-1k.jsonl: 100%|██████████| 16/16 [00:03<00:00,  4.12it/s]
-tigerbot-superclue-c3-zh-5k.jsonl: 100%|██████████| 75/75 [02:28<00:00,  1.98s/it]
-tigerbot-wiki-qa-zh-1k.jsonl: 100%|██████████| 16/16 [00:07<00:00,  2.01it/s]
+Alpaca_data_gpt4_zhsilk_road.jsonl: 100%|██████████| 814/814 [28:33<00:00,  2.11s/it]</br>
+ruozhiba_qa.json: 100%|██████████| 24/24 [00:17<00:00,  1.35it/s]</br>
+tigerbot-alpaca-zh-0.5m.jsonl: 100%|██████████| 7813/7813 [2:13:35<00:00,  1.03s/it]</br>
+tigerbot-book-qa-1k.jsonl: 100%|██████████| 14/14 [00:05<00:00,  2.55it/s]</br>
+tigerbot-hc3-zh-12k.jsonl: 100%|██████████| 201/201 [05:07<00:00,  1.53s/it]</br>
+tigerbot-riddle-qa-1k.jsonl: 100%|██████████| 16/16 [00:03<00:00,  4.12it/s]</br>
+tigerbot-superclue-c3-zh-5k.jsonl: 100%|██████████| 75/75 [02:28<00:00,  1.98s/it]</br>
+tigerbot-wiki-qa-zh-1k.jsonl: 100%|██████████| 16/16 [00:07<00:00,  2.01it/s]</br>
 
-单个T4，8个文件289.6Mb共处理时间: 100%|██████████| 9/9 [2:56:01<00:00, 1173.49s/it]
+单个T4，8个文件289.6Mb共处理时间: 100%|██████████| 9/9 [2:56:01<00:00, 1173.49s/it]</br>
 一张T4，一天可处理2.26GB。
