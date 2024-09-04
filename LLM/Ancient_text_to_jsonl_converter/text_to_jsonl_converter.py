@@ -14,18 +14,21 @@
 # 最后形成以下jsonl格式
 # ```json
 # {
-#     "instruction":"你是一位精通中国古代文学和现代汉语的语言专家。你的任务是将给定的古文段落准确翻译成现代汉语，保持原文的意思和风格，同时使用当代读者容易理解的语言。请注意以下几点：1.保持原文的核心意思和情感。2.使用现代汉语的语法结构和表达方式。3.选择恰当的现代词汇来表达古文中的概念。4.如果有些词语或概念在现代没有直接对应，请提供简短的解释。5.保持文学性和优雅度，但优先考虑清晰度和可读性。6.如果原文中有特殊的修辞手法或文学设备，尽量在现代文中体现出来。请将以下古文翻译成现代文：",
+#     "instruction":"prompt",
 #     "input":古文,
 #     "output":现代文
 # }
 # ```
+# 以30%的概率将现代文作为input，古文作为output。70%的概率古文作为input，现代文作为output。
+# prompt：你是一位精通中国古代文学和现代汉语的语言专家。你的任务是将给定的古文段落准确翻译成现代汉语，保持原文的意思和风格，同时使用当代读者容易理解的语言。请将以下古文翻译成现代文：
+# 你需要根据选定的input、output为现代文还是古文，修改上述prompt
 # 以给定的目录地址作为根目录，由于每个文件目录包含了该段古文的出处，比如
 # ./汉书/志/郊祀志上/bitext.txt
 # 你可以将"《汉书·志·郊祀志上》"出处融入instruction中
 
-
 import os
 import json
+import random
 from pathlib import Path
 
 def process_bitext(file_path):
@@ -45,7 +48,7 @@ def process_bitext(file_path):
     return processed_pairs
 
 def get_source(file_path):
-    parts = file_path.parts[1:-1]
+    parts = file_path.parts[1:-1]  # 去掉根目录和文件名
     return '《' + '·'.join(parts) + '》'
 
 def create_jsonl(root_dir, output_file):
@@ -57,14 +60,25 @@ def create_jsonl(root_dir, output_file):
             source = get_source(file_path)
             
             for ancient, modern in pairs:
-                data = {
-                    "instruction": f"你是一位精通中国古代文学和现代汉语的语言专家。你的任务是将给定的古文段落准确翻译成现代汉语，保持原文的意思和风格，同时使用当代读者容易理解的语言。请将以下{source}中的古文翻译成现代文：",
-                    "input": ancient,
-                    "output": modern
-                }
+                if random.random() < 0.3:  # 30% 概率现代文作为input
+                    instruction = f"你是一位精通中国古代文学和现代汉语的语言专家。你的任务是将给定的现代汉语准确转换成古文，保持原文的意思和风格，同时使用符合古代文学特征的语言。请将以下现代文转换为古文："
+                    data = {
+                        "instruction": instruction,
+                        "input": modern,
+                        "output": ancient
+                    }
+                else:  # 70% 概率古文作为input
+                    instruction = f"你是一位精通中国古代文学和现代汉语的语言专家。你的任务是将给定的古文段落准确翻译成现代汉语，保持原文的意思和风格，同时使用当代读者容易理解的语言。请将以下{source}中的古文翻译成现代文："
+                    data = {
+                        "instruction": instruction,
+                        "input": ancient,
+                        "output": modern
+                    }
+                
                 json.dump(data, out_file, ensure_ascii=False)
                 out_file.write('\n')
 
+# 使用示例
 root_directory = './your_root_directory'
 output_file = 'output.jsonl'
 create_jsonl(root_directory, output_file)
