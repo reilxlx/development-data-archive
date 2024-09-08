@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "网页二维码生成器",
+  "version": "1.0",
+  "description": "在网页右下角显示当前网址的二维码",
+  "permissions": [
+    "activeTab",
+    "https://www.google.com/",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["qrcode.min.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    "qrcode.min.js"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'"
+}
