@@ -1,4 +1,9 @@
-在本地4*T4卡上测试
+# 使用vLLM部署Qwen2-VL模型
+
+## 本地部署（4*T4卡）
+
+使用以下命令在本地4*T4卡上进行测试:
+
 CUDA_VISIBLE_DEVICES=0,1,3,4 python -m vllm.entrypoints.openai.api_server --served-model-name Qwen2-VL-2B-Instruct --model weights/Qwen2-VL-2B-Instruct --dtype=half --max-model-len=16384 --tensor_parallel_size=4
 
 安装Qwen2-VL Github提供的transformers版本，pip install git+https://github.com/huggingface/transformers@21fac7abba2a37fae86106f87fcf9974fd1e3830 accelerate
@@ -11,7 +16,7 @@ CUDA_VISIBLE_DEVICES=0,1,3,4 python -m vllm.entrypoints.openai.api_server --serv
 请求体参考json报文：
 ```json
 payload = {
-    "model": "gpt-4o",
+    "model": "Qwen2-VL-2B-Instruct",
     "messages": [
         {
             "role": "user",
