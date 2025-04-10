@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>零样本TTS模型对比</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        .tts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tts-table th, .tts-table td {
+            padding: 15px;
+            text-align: center;
+            border: none;
+        }
+        
+        .tts-table th:nth-child(3), .tts-table td:nth-child(3) {
+            text-align: left;
+        }
+
+        .tts-table th {
+            background-color: #a4c3f5;
+            color: white;
+            font-weight: 500;
+        }
+
+        .speaker-column {
+            width: 100px;
+            background-color: #f0f5ff;
+            font-weight: 500;
+        }
+
+        .text-content {
+            width: 30%;
+            text-align: left !important;
+            padding: 10px 15px 10px 20px;
+            font-size: 15px;
+            line-height: 1.5;
+            text-indent: 0;
+            text-justify: inter-word;
+        }
+
+        .audio-cell {
+            padding: 10px;
+        }
+
+        audio {
+            width: 200px;
+            height: 40px;
+            outline: none;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: #f7f7f7;
+        }
+
+        .model-group {
+            margin-bottom: 50px;
+        }
+
+        .model-title {
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #a4c3f5;
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .model-name {
+            font-weight: bold;
+            color: #555;
+            text-align: left;
+        }
+        
+        .flex-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .tts-table {
+                font-size: 14px;
+            }
+            
+            audio {
+                width: 150px;
+            }
+            
+            .text-content {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>零样本TTS模型对比</h1>
+
+    <div class="model-group">
+        <div class="model-title">
+            <h2>Speaker 1: 刘涛</h2>
+        </div>
+        <table class="tts-table">
+            <thead>
+                <tr>
+                    <th>Speaker</th>
+                    <th>参考音频</th>
+                    <th>文本内容</th>
+                    <th>IndexTTS</th>
+                    <th>Fish-Speech-1.5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="speaker-column">Speaker-1</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/liutao.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">第一次见面，感觉有点小紧张呢。我是一个很容易被温柔打动的人，也总是对有趣的灵魂特别没抵抗力。平时喜欢听歌、看电影、偶尔也会发呆，想知道你会不会也不小心闯进我的小世界呢？</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/liutao/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/liutao/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-1</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/liutao.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">在时光的流转中，我们如同匆匆过客，见证着生命的诞生与消逝，欢笑与泪水。我们在春天播下希望的种子，在夏日挥洒辛勤的汗水，在秋天收获成功的喜悦，在冬日反思沉淀。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/liutao/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/liutao/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-1</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/liutao.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">夜色沉沉，时间仿佛停滞，我们谁都没有再说话，只是安静地靠在一起，听着彼此的心跳渐渐同步，外面的风吹动窗帘，投下一片片温柔的影子。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/liutao/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/liutao/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-1</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/liutao.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">手机银行转账功能非常便捷，但请务必注意安全。在操作时，请仔细核对收款人的姓名、账号和开户行信息，确认无误后再进行下一步。同时，我们设置了单笔和日累计转账限额以保障您的资金安全。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/liutao/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/liutao/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="model-group">
+        <div class="model-title">
+            <h2>Speaker 2: 迪丽热巴</h2>
+        </div>
+        <table class="tts-table">
+            <thead>
+                <tr>
+                    <th>Speaker</th>
+                    <th>参考音频</th>
+                    <th>文本内容</th>
+                    <th>IndexTTS</th>
+                    <th>Fish-Speech-1.5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="speaker-column">Speaker-2</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/dilireba.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">第一次见面，感觉有点小紧张呢。我是一个很容易被温柔打动的人，也总是对有趣的灵魂特别没抵抗力。平时喜欢听歌、看电影、偶尔也会发呆，想知道你会不会也不小心闯进我的小世界呢？</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/dilireba/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/dilireba/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-2</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/dilireba.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">在时光的流转中，我们如同匆匆过客，见证着生命的诞生与消逝，欢笑与泪水。我们在春天播下希望的种子，在夏日挥洒辛勤的汗水，在秋天收获成功的喜悦，在冬日反思沉淀。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/dilireba/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/dilireba/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-2</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/dilireba.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">夜色沉沉，时间仿佛停滞，我们谁都没有再说话，只是安静地靠在一起，听着彼此的心跳渐渐同步，外面的风吹动窗帘，投下一片片温柔的影子。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/dilireba/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/dilireba/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-2</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/dilireba.mp3" type="audio/mpeg">
+                        </audio>
+                    </td>
+                    <td class="text-content">手机银行转账功能非常便捷，但请务必注意安全。在操作时，请仔细核对收款人的姓名、账号和开户行信息，确认无误后再进行下一步。同时，我们设置了单笔和日累计转账限额以保障您的资金安全。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/dilireba/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/dilireba/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="model-group">
+        <div class="model-title">
+            <h2>Speaker 3: 古力娜扎</h2>
+        </div>
+        <table class="tts-table">
+            <thead>
+                <tr>
+                    <th>Speaker</th>
+                    <th>参考音频</th>
+                    <th>文本内容</th>
+                    <th>IndexTTS</th>
+                    <th>Fish-Speech-1.5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="speaker-column">Speaker-3</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/gulinazha.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="text-content">第一次见面，感觉有点小紧张呢。我是一个很容易被温柔打动的人，也总是对有趣的灵魂特别没抵抗力。平时喜欢听歌、看电影、偶尔也会发呆，想知道你会不会也不小心闯进我的小世界呢？</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/gulinazha/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-3</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/gulinazha.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="text-content">在时光的流转中，我们如同匆匆过客，见证着生命的诞生与消逝，欢笑与泪水。我们在春天播下希望的种子，在夏日挥洒辛勤的汗水，在秋天收获成功的喜悦，在冬日反思沉淀。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/gulinazha/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-3</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/gulinazha.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="text-content">夜色沉沉，时间仿佛停滞，我们谁都没有再说话，只是安静地靠在一起，听着彼此的心跳渐渐同步，外面的风吹动窗帘，投下一片片温柔的影子。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/gulinazha/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker-column">Speaker-3</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="参考音频/gulinazha.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="text-content">手机银行转账功能非常便捷，但请务必注意安全。在操作时，请仔细核对收款人的姓名、账号和开户行信息，确认无误后再进行下一步。同时，我们设置了单笔和日累计转账限额以保障您的资金安全。</td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/index-TTS/gulinazha/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加音频播放器控制逻辑
+            const audioElements = document.querySelectorAll('audio');
+            
+            audioElements.forEach(audio => {
+                audio.addEventListener('play', function() {
+                    audioElements.forEach(otherAudio => {
+                        if(otherAudio !== audio && !otherAudio.paused) {
+                            otherAudio.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
