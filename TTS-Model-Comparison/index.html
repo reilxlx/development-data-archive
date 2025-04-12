@@ -9,7 +9,7 @@
             font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f9f9f9;
@@ -54,7 +54,7 @@
         }
 
         .text-content {
-            width: 30%;
+            width: 25%;
             text-align: left !important;
             padding: 10px 15px 10px 20px;
             font-size: 15px;
@@ -68,7 +68,7 @@
         }
 
         audio {
-            width: 200px;
+            width: 220px;
             height: 40px;
             outline: none;
         }
@@ -101,17 +101,33 @@
             align-items: center;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
+            body {
+                max-width: 100%;
+                padding: 15px;
+            }
+            
             .tts-table {
                 font-size: 14px;
             }
             
             audio {
-                width: 150px;
+                width: 180px;
             }
             
             .text-content {
                 font-size: 14px;
+                width: 30%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            audio {
+                width: 150px;
+            }
+            
+            .text-content {
+                width: 35%;
             }
         }
     </style>
@@ -131,6 +147,7 @@
                     <th>文本内容</th>
                     <th>IndexTTS</th>
                     <th>Fish-Speech-1.5</th>
+                    <th>SparkTTS</th>
                 </tr>
             </thead>
             <tbody>
@@ -152,6 +169,11 @@
                             <source src="TTS/Fish-Speech-1.5/liutao/sentence_1.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/liutao/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
                 <tr>
                     <td class="speaker-column">Speaker-1</td>
@@ -169,6 +191,11 @@
                     <td class="audio-cell">
                         <audio controls>
                             <source src="TTS/Fish-Speech-1.5/liutao/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/liutao/sentence_2.wav" type="audio/wav">
                         </audio>
                     </td>
                 </tr>
@@ -190,6 +217,11 @@
                             <source src="TTS/Fish-Speech-1.5/liutao/sentence_3.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/liutao/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
                 <tr>
                     <td class="speaker-column">Speaker-1</td>
@@ -209,6 +241,11 @@
                             <source src="TTS/Fish-Speech-1.5/liutao/sentence_4.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/liutao/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -226,6 +263,7 @@
                     <th>文本内容</th>
                     <th>IndexTTS</th>
                     <th>Fish-Speech-1.5</th>
+                    <th>SparkTTS</th>
                 </tr>
             </thead>
             <tbody>
@@ -247,6 +285,11 @@
                             <source src="TTS/Fish-Speech-1.5/dilireba/sentence_1.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/dilireba/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
                 <tr>
                     <td class="speaker-column">Speaker-2</td>
@@ -264,6 +307,11 @@
                     <td class="audio-cell">
                         <audio controls>
                             <source src="TTS/Fish-Speech-1.5/dilireba/sentence_2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/dilireba/sentence_2.wav" type="audio/wav">
                         </audio>
                     </td>
                 </tr>
@@ -285,6 +333,11 @@
                             <source src="TTS/Fish-Speech-1.5/dilireba/sentence_3.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/dilireba/sentence_3.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
                 <tr>
                     <td class="speaker-column">Speaker-2</td>
@@ -304,6 +357,11 @@
                             <source src="TTS/Fish-Speech-1.5/dilireba/sentence_4.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/dilireba/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -321,6 +379,7 @@
                     <th>文本内容</th>
                     <th>IndexTTS</th>
                     <th>Fish-Speech-1.5</th>
+                    <th>SparkTTS</th>
                 </tr>
             </thead>
             <tbody>
@@ -342,6 +401,11 @@
                             <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_1.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/gulinazha/sentence_1.wav" type="audio/wav">
+                        </audio>
+                    </td>
                 </tr>
                 <tr>
                     <td class="speaker-column">Speaker-3</td>
@@ -360,6 +424,9 @@
                         <audio controls>
                             <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_2.wav" type="audio/wav">
                         </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <!-- 无SparkTTS结果 -->
                     </td>
                 </tr>
                 <tr>
@@ -380,6 +447,9 @@
                             <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_3.wav" type="audio/wav">
                         </audio>
                     </td>
+                    <td class="audio-cell">
+                        <!-- 无SparkTTS结果 -->
+                    </td>
                 </tr>
                 <tr>
                     <td class="speaker-column">Speaker-3</td>
@@ -397,6 +467,11 @@
                     <td class="audio-cell">
                         <audio controls>
                             <source src="TTS/Fish-Speech-1.5/gulinazha/sentence_4.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td class="audio-cell">
+                        <audio controls>
+                            <source src="TTS/SparkTTS/gulinazha/sentence_4.wav" type="audio/wav">
                         </audio>
                     </td>
                 </tr>
